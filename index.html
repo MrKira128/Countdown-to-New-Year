@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to New Year</title>
+    <link rel="icon" href="https://img.icons8.com/cotton/64/000000/new-year.png">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="bg"></div>
+
+    <div class="container">
+        <h2>
+        <span>Countdown to New Year</span><span id="year">Calculating...</span>
+        </h2>
+        <div class="countdown">
+        <div id="day">NA</div>
+        <div id="hour">NA</div>
+        <div id="minute">NA</div>
+        <div id="second">NA</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        setInterval(()=> {
+        let nextYear = new Date().getFullYear() + 1;
+        let countDate = new Date(`Jan 1, ${nextYear} 00:00:00`).getTime();
+        let now = new Date().getTime();
+        gap = countDate - now;
+
+        let second = 1000;
+        let minute = second * 60;
+        let hour = minute * 60;
+        let day = hour * 24;
+
+        document.getElementById("day").innerText = Math.floor(gap / day);
+        document.getElementById("hour").innerText = Math.floor((gap % day) / hour);
+        document.getElementById("minute").innerText = Math.floor((gap % hour) / minute);
+        document.getElementById("second").innerText = Math.floor((gap % minute) / second);
+        document.getElementById("year").innerHTML = nextYear;
+        }, 1000)();
+    </script>
+
+</body>
+</html>
